@@ -518,12 +518,11 @@ def run_inference(n_clicks, audio_class, text_description):
                     html.Span("max(audio, text) — Conservative strategy",
                               style={"color":"#a78bfa","fontSize":"0.8em","fontStyle":"italic"}),
                 ]),
-                html.Div([
-                    html.Span("Keywords matched: ", style={"color":"#adb5bd","fontSize":"0.78em"}),
-                    *keyword_badges if keyword_badges else [
-                        html.Span("none", style={"color":"#6c757d","fontSize":"0.78em"})
-                    ],
-                ], style={"marginTop":"6px"}),
+                html.Div(
+                    [html.Span("Keywords matched: ", style={"color":"#adb5bd","fontSize":"0.78em"})]
+                    + (keyword_badges if keyword_badges else [html.Span("none", style={"color":"#6c757d","fontSize":"0.78em"})]),
+                    style={"marginTop":"6px"}
+                ),
             ], width=5),
 
             # Recommended actions
