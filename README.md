@@ -33,7 +33,6 @@ pinned: false
  
 ## ✨ What's New in v1.3.0
 - 🤖 **Live Inference Panel** — select audio class + type crime description → instant severity prediction
-- 🎨 **Fixed audio chart colors** — discrete Red/Orange/Green by severity
 - 🔍 **Modality breakdown** — see audio vs text predictions separately with confidence scores
 - 🏷️ **Keyword matching** — highlights which words triggered the text severity prediction
  
