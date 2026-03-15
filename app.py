@@ -49,6 +49,19 @@ AUDIO_CLASSES = [
     "jackhammer", "engine_idling", "street_music", "children_playing", "air_conditioner",
 ]
 
+TEXT_SAMPLES = [
+    "Gunshot heard near residential area, suspect fled on foot",
+    "Siren detected near industrial zone, emergency response dispatched",
+    "Suspicious drilling activity reported near bank premises",
+    "Car horn disturbance reported by multiple residents",
+    "Jackhammer noise reported near school during exam hours",
+    "Street music disturbance in commercial district",
+    "Children playing near construction zone — safety concern",
+    "Engine idling near ATM for extended period",
+    "Dog bark alerted residents to prowler near fence",
+    "Air conditioning unit malfunction causing disturbance",
+]
+
 VIZAG_LOCATIONS = [
     {"name": "Downtown Visakhapatnam", "lat": 17.6868, "lon": 83.2185},
     {"name": "Industrial Zone",        "lat": 17.7333, "lon": 83.3167},
@@ -113,7 +126,7 @@ DEMO_INCIDENTS = [
         "timestamp":     (datetime.now() - pd.Timedelta(minutes=i * 15)).strftime("%Y-%m-%d %H:%M:%S"),
         "audio_class":   AUDIO_CLASSES[i % len(AUDIO_CLASSES)],
         "text_category": "CRIME",
-        "text_content":  f"Demo incident {i} – replace with real test_loader data.",
+        "text_content":  TEXT_SAMPLES[i % len(TEXT_SAMPLES)],
         "severity":      i % 3,
         "confidence":    round(0.75 + 0.05 * (i % 5), 2),
         "measures":      get_precautionary_measures(i % 3, AUDIO_CLASSES[i % len(AUDIO_CLASSES)]),
