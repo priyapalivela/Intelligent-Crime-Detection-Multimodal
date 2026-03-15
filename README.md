@@ -12,26 +12,36 @@ pinned: false
 # 🔍 Intelligent Crime Detection — Multimodal AI
 
 📊 Multimodal Deep Learning | Crime Intelligence | Real-Time AI Monitoring
-
-![Python](https://img.shields.io/badge/Python-3.10-blue)
-![PyTorch](https://img.shields.io/badge/PyTorch-DeepLearning-red)
+ 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.2.0-red)
 ![Transformers](https://img.shields.io/badge/HuggingFace-Transformers-yellow)
-![Dash](https://img.shields.io/badge/Dash-Plotly-blue)
+![Dash](https://img.shields.io/badge/Dash-2.17.0-blue)
 ![Docker](https://img.shields.io/badge/Deploy-Docker-blue)
-![HuggingFace](https://img.shields.io/badge/Deploy-HuggingFace-yellow)
+![HuggingFace](https://img.shields.io/badge/Deploy-HuggingFace_Spaces-yellow)
+![Tests](https://img.shields.io/badge/Tests-10%2F10_passing-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-green)
-
-> A real-time crime severity detection system that fuses **audio signals** and **text descriptions** using deep learning to classify incidents as Low, Medium, or High severity — with a live Dash monitoring dashboard.
-
+ 
+> A real-time crime severity detection system that fuses **audio signals** and **text descriptions** using deep learning to classify incidents as Low, Medium, or High severity — with a live interactive Dash dashboard and **real-time multimodal inference**.
+ 
 ---
-
+ 
 ## 🚀 Live Demo
-🔗 [priyapalivela-crime-detection-dashboard.hf.space](https://priyapalivela-crime-detection-dashboard.hf.space)
-
+🔗 **[priyapalivela-crime-detection-dashboard.hf.space](https://priyapalivela-crime-detection-dashboard.hf.space)**
+ 
+---
+ 
+## ✨ What's New in v1.3.0
+- 🤖 **Live Inference Panel** — select audio class + type crime description → instant severity prediction
+- 🎨 **Fixed audio chart colors** — discrete Red/Orange/Green by severity
+- 🔍 **Modality breakdown** — see audio vs text predictions separately with confidence scores
+- 🏷️ **Keyword matching** — highlights which words triggered the text severity prediction
+ 
 ---
 
 ## 📚 Table of Contents
 - [Overview](#-overview)
+- [Live Inference](#-live-inference)
 - [Model Architecture](#-model-architecture)
 - [Results](#-results)
 - [Model Performance](#-model-performance)
@@ -62,6 +72,23 @@ spoken reports, and textual descriptions.
 This project investigates whether combining **acoustic signals and textual crime narratives** 
 through multimodal deep learning can improve the detection of **incident severity**.
 
+---
+ 
+## 🤖 Live Inference
+ 
+The dashboard includes a **live multimodal inference panel**:
+ 
+1. Select an **audio class** (Gun Shot, Siren, Car Horn etc.)
+2. Type a **crime description** in natural language
+3. Click **Classify Severity**
+4. See the **fused prediction** with modality breakdown
+ 
+The system shows:
+- Audio modality severity + confidence
+- Text modality severity + confidence (with matched keywords)
+- **Conservative fusion result** — `max(audio, text)` — minimizing false negatives
+- Color-coded result card + recommended actions
+ 
 ---
 
 ## 🧠 Model Architecture
@@ -217,12 +244,12 @@ Intelligent-Crime-Detection-Multimodal/
 │   ├── models.py           # AudioEncoder, TextEncoder, FusionModel
 │   ├── audio_encoder.py
 │   └── utils/
-│       ├── metrics.py
+│       ├── metrics.py      # compute_metrics, get_confusion_matrix
 │       └── visualization.py
 │
 └── tests/
-    ├── test_models.py
-    └── test_data_processing.py
+    ├── test_models.py           # 4 tests — all passing
+    └── test_data_processing.py  # 6 tests — all passing
 ```
 
 ---
@@ -277,17 +304,20 @@ Open and run `notebook/Crime_Detection.ipynb` in order:
 9. Explainability dashboards
 
 ---
-
+ 
 ## 📈 Dashboard Features
-
-- 📍 **Geographic Map** — Incident predictions visualized on a simulated city map (Visakhapatnam) for demonstration purposes
-- 📊 **Severity Distribution** — Real-time bar chart of Low/Medium/High
+ 
+- 🤖 **Live Inference Panel** — type any crime description + select audio → instant prediction
+- 📊 **Stats Cards** — Total/High/Medium/Low incident counts
+- 📍 **Geographic Map** — Incidents on Visakhapatnam city map
+- 📊 **Severity Distribution** — Bar chart Low/Medium/High
+- 📈 **Severity Trends** — Time-series chart by hour
+- 🔊 **Audio Distribution** — Color-coded by severity
 - 🚨 **High Severity Alerts** — Prioritized list with recommended actions
-- 📋 **Incidents Table** — Full log with severity badges and details modal
-- 🔍 **Incident Modal** — Confidence score, precautionary measures, mini map
-- 🎚️ **Confidence Threshold Slider** — Filter incidents by minimum confidence level
-- 📈 **Time-Series Chart** — Severity trends visualized over time
-
+- 📋 **Incidents Table** — Full log with severity badges
+- 🔍 **Detail Modal** — Confidence bar, measures, mini map
+- 🎚️ **Confidence Filter** — Slider to filter by minimum confidence
+ 
 ---
 
 ## 📸 Dashboard Preview
@@ -317,44 +347,38 @@ CMD ["gunicorn", "app:server", "--workers", "1", "--threads", "2", "--timeout", 
 ---
 
 ## 🛠️ Tech Stack
-
+ 
 | Component | Technology |
 |-----------|-----------|
 | Audio Features | torchaudio, MFCC, Librosa, Soundfile |
 | Text Encoding | HuggingFace DistilBERT |
 | Training | PyTorch, AdamW, CosineAnnealingLR |
 | Evaluation | scikit-learn, F1/F2, ROC-AUC |
-| Dashboard | Plotly Dash, Dash Bootstrap |
-| Containerization | Docker |
+| Dashboard | Plotly Dash 2.17.0, Dash Bootstrap |
+| Containerization | Docker (python:3.11-slim) |
 | Deployment | HuggingFace Spaces, Gunicorn |
-
+| Testing | pytest — 10/10 passing |
+ 
 ---
-
+ 
 ## 🔬 Research Contributions
-
-This project explores **multimodal fusion for crime severity prediction**, combining environmental audio signals with textual crime descriptions.
-
-Key contributions include:
-
-• Fusion of **acoustic event detection** and **crime narrative text**  
-• Use of **DistilBERT + CNN-BiLSTM hybrid architecture**  
-• A **conservative fusion strategy** prioritizing high-risk predictions  
-• Real-time monitoring through an interactive **Dash dashboard**
-
-The system demonstrates how multimodal learning can support **early warning and intelligent monitoring systems**.
-
+ 
+- Fusion of **acoustic event detection** and **crime narrative text**
+- **DistilBERT + CNN-BiLSTM hybrid architecture**
+- **Conservative fusion strategy** prioritizing high-risk predictions
+- **Live inference panel** demonstrating real multimodal classification
+- Real-time monitoring through interactive **Dash dashboard**
+ 
 ---
-
+ 
 ## 🔮 Future Work
-
-• Incorporate datasets where **audio and text originate from the same incident** (e.g., police bodycam footage with transcripts) to improve multimodal learning quality.
-
-• Add **attention visualization** to highlight which words or audio frequencies most influenced the model's prediction.
-
-• Extend the system with **video-based crime detection using CCTV footage** as a third modality.
-
-• Deploy **real-time streaming inputs** (audio or sensor feeds) for continuous incident monitoring.
-
+ 
+- Incorporate datasets where audio and text originate from the same incident
+- Add attention visualization to highlight influential features
+- Extend with video-based crime detection as a third modality
+- Deploy real-time audio streaming for continuous monitoring
+- Fine-tune on India-specific crime datasets (IPC codes)
+ 
 ---
 
 ## 📜 License
