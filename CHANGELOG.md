@@ -4,10 +4,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.3.0] - 2026-03-15
+### Added
+- **Live Multimodal Inference Panel** — select audio class + type crime description → get real-time severity prediction
+- Audio class dropdown with all 10 UrbanSound8K classes
+- Text input box for crime description
+- Conservative fusion display — shows audio severity, text severity, and final fused prediction separately
+- Keyword matching engine that mirrors DistilBERT classification logic
+- Matched keywords highlighted in result panel
+- Recommended actions panel in inference result
+- Color-coded result card (Red/Orange/Green by severity)
+- Clear button to reset inference panel
+
+### Fixed
+- Audio Class Distribution chart now uses discrete severity colors (Red/Orange/Green) instead of continuous color scale
+- Gun Shot and Siren now correctly show Red (High) in audio chart
+
+---
+
 ## [1.2.0] - 2026-03-15
 ### Changed
 - Migrated deployment from Render to Hugging Face Spaces (Docker)
-- Replaced Render-specific render.yaml with Dockerfile for containerized deployment
+- Replaced render.yaml with Dockerfile for containerized deployment
 - Fixed OOM crash on Render free tier (512MB limit) — HF Spaces provides 16GB RAM
 - Pinned all dependency versions in requirements.txt for Docker stability
 - Fixed wordcloud version (1.9.0 → 1.9.2) for Python 3.11 compatibility
@@ -17,6 +35,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Dockerfile with python:3.11-slim base image
 - Realistic demo incident descriptions replacing placeholder text
 - Git LFS tracking for all binary files (.pt, .png, .wav)
+- src/data.py with AUDIO_SEVERITY_MAPPING and TEXT_SEVERITY_MAP
+- 10/10 unit tests passing (test_models.py + test_data_processing.py)
+- Stats cards at top of dashboard (Total/High/Medium/Low counts)
+- Audio Class Distribution chart (4th visualization)
+- 20 properly matched incidents (severity correctly matched to audio class)
+
+---
 
 ## [1.1.0] - 2026-03-11
 ### Added
@@ -24,12 +49,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Crime_Detection.ipynb notebook pushed to notebook/ folder (outputs cleared)
 
 ### Fixed
-- Resolved merge conflict in requirements.txt, merged both versions cleanly
+- Resolved merge conflict in requirements.txt
 - Added missing dependencies: librosa, scipy, Pillow
-- Removed dev-only packages from Render build: jupyter, notebook, black, flake8, opencv-python
 - Fixed app.py host from 0.0.0.0 to 127.0.0.1 to resolve WinError 10049 on Windows
 - Added weights_only=True to torch.load() to suppress security warning
-- Increased gunicorn timeout from 120s to 300s for DistilBERT model load time on Render
+- Increased gunicorn timeout from 120s to 300s for DistilBERT model load time
 
 ---
 
@@ -41,11 +65,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Supervised contrastive loss with gradual DistilBERT layer unfreezing
 - Conservative late-fusion severity rule (max of unimodal predictions)
 - Full EDA visualizations: top crimes, pie chart, word cloud, severity distributions
-- Confusion matrix with adaptive text colour, ROC curves, ablation study chart
-- Per-sample explainability dashboards (modality contribution + decoded text)
-- Real-time matplotlib monitoring dashboard
+- Confusion matrix, ROC curves, ablation study chart
+- Per-sample explainability dashboards
 - Interactive Dash web dashboard (dark theme, Plotly maps, modal incident details)
 - Modular src/ package: models/, data/, utils/
-- Standalone scripts: train.py, evaluate.py, explainability.py, dashboard.py, monitoring_dashboard.py
 - Unit tests for model forward passes and data processing utilities
-- Render deployment config (app.py + gunicorn)
