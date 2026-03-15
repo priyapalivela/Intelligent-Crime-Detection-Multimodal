@@ -1,4 +1,4 @@
----
+﻿---
 title: Crime Detection Dashboard
 emoji: 🔍
 colorFrom: purple
@@ -7,11 +7,20 @@ sdk: docker
 pinned: false
 ---
 
-# ⭐ Star this repo if you find it useful!
+---
+title: Crime Detection Dashboard
+emoji: ðŸ”
+colorFrom: purple
+colorTo: blue
+sdk: docker
+pinned: false
+---
 
-# \# 🔍 Intelligent Crime Detection — Multimodal AI
+# â­ Star this repo if you find it useful!
 
-# 📊 Multimodal Deep Learning | Crime Intelligence | Real-Time AI Monitoring
+# \# ðŸ” Intelligent Crime Detection â€” Multimodal AI
+
+# ðŸ“Š Multimodal Deep Learning | Crime Intelligence | Real-Time AI Monitoring
 
 # 
 
@@ -29,7 +38,7 @@ pinned: false
 
 # 
 
-# > A real-time crime severity detection system that fuses \*\*audio signals\*\* and \*\*text descriptions\*\* using deep learning to classify incidents as Low, Medium, or High severity — with a live Dash monitoring dashboard.
+# > A real-time crime severity detection system that fuses \*\*audio signals\*\* and \*\*text descriptions\*\* using deep learning to classify incidents as Low, Medium, or High severity â€” with a live Dash monitoring dashboard.
 
 # 
 
@@ -37,15 +46,15 @@ pinned: false
 
 # 
 
-# \## 🚀 Live Demo
+# \## ðŸš€ Live Demo
 
-# 🔗 \[crime-severity-dashboard.onrender.com](https://intelligent-crime-detection-multimodal.onrender.com) \*(Free hosting may take ~30 seconds to wake up.)\*
+# ðŸ”— \[crime-severity-dashboard.onrender.com](https://intelligent-crime-detection-multimodal.onrender.com) \*(Free hosting may take ~30 seconds to wake up.)\*
 
 # 
 
 # ---
 
-# \## 📚 Table of Contents
+# \## ðŸ“š Table of Contents
 
 # \- \[Overview](#-overview)
 
@@ -79,15 +88,15 @@ pinned: false
 
 # 
 
-# \## 📌 Overview
+# \## ðŸ“Œ Overview
 
 # 
 
 # This project builds a \*\*multimodal AI system\*\* that combines:
 
-# \- 🎵 \*\*Audio\*\* — UrbanSound8K environmental sounds (gunshots, sirens, drilling etc.)
+# \- ðŸŽµ \*\*Audio\*\* â€” UrbanSound8K environmental sounds (gunshots, sirens, drilling etc.)
 
-# \- 📝 \*\*Text\*\* — Chicago Police Department IUCR crime descriptions
+# \- ðŸ“ \*\*Text\*\* â€” Chicago Police Department IUCR crime descriptions
 
 # 
 
@@ -97,7 +106,7 @@ pinned: false
 
 # Crime monitoring systems often rely on single modalities such as textual reports or CCTV footage. 
 
-# However, real-world incidents frequently involve multiple information sources — environmental sounds, 
+# However, real-world incidents frequently involve multiple information sources â€” environmental sounds, 
 
 # spoken reports, and textual descriptions.
 
@@ -113,115 +122,115 @@ pinned: false
 
 # 
 
-# \## 🧠 Model Architecture
+# \## ðŸ§  Model Architecture
 
 # 
 
 # ```
 
-# &nbsp;               ┌──────────────────────────┐
+# &nbsp;               â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-# &nbsp;               │        Multimodal        │
+# &nbsp;               â”‚        Multimodal        â”‚
 
-# &nbsp;               │   Crime Severity Model   │
+# &nbsp;               â”‚   Crime Severity Model   â”‚
 
-# &nbsp;               └────────────┬─────────────┘
+# &nbsp;               â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-# &nbsp;                            │
+# &nbsp;                            â”‚
 
-# &nbsp;       ┌────────────────────┴────────────────────┐
+# &nbsp;       â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-# &nbsp;       │                                         │
+# &nbsp;       â”‚                                         â”‚
 
-# &nbsp;┌───────────────┐                        ┌─────────────────┐
+# &nbsp;â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                        â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-# &nbsp;│   Audio Input │                        │   Text Input    │
+# &nbsp;â”‚   Audio Input â”‚                        â”‚   Text Input    â”‚
 
-# &nbsp;│ (MFCC / Mel)  │                        │ Crime Report    │
+# &nbsp;â”‚ (MFCC / Mel)  â”‚                        â”‚ Crime Report    â”‚
 
-# &nbsp;└───────┬───────┘                        └────────┬────────┘
+# &nbsp;â””â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”˜                        â””â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-# &nbsp;        │                                         │
+# &nbsp;        â”‚                                         â”‚
 
-# &nbsp; ┌───────────────┐                       ┌──────────────────┐
+# &nbsp; â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                       â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-# &nbsp; │ CNN Layers    │                       │ DistilBERT       │
+# &nbsp; â”‚ CNN Layers    â”‚                       â”‚ DistilBERT       â”‚
 
-# &nbsp; │ (Feature Map) │                       │ Text Encoder     │
+# &nbsp; â”‚ (Feature Map) â”‚                       â”‚ Text Encoder     â”‚
 
-# &nbsp; └───────┬───────┘                       └────────┬─────────┘
+# &nbsp; â””â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”˜                       â””â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-# &nbsp;         │                                        │
+# &nbsp;         â”‚                                        â”‚
 
-# &nbsp;  ┌──────────────┐                       ┌─────────────────┐
+# &nbsp;  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                       â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-# &nbsp;  │  BiLSTM      │                       │ Context Vector  │
+# &nbsp;  â”‚  BiLSTM      â”‚                       â”‚ Context Vector  â”‚
 
-# &nbsp;  │ Temporal     │                       │ (768-dim)       │
+# &nbsp;  â”‚ Temporal     â”‚                       â”‚ (768-dim)       â”‚
 
-# &nbsp;  │ Modeling     │                       └────────┬────────┘
+# &nbsp;  â”‚ Modeling     â”‚                       â””â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-# &nbsp;  └───────┬──────┘                                │
+# &nbsp;  â””â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”˜                                â”‚
 
-# &nbsp;          │                                 ┌─────────────┐
+# &nbsp;          â”‚                                 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-# &nbsp;    ┌─────────────┐                         │ Linear Proj │
+# &nbsp;    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”                         â”‚ Linear Proj â”‚
 
-# &nbsp;    │ Audio Emb.  │                         │   (256)     │
+# &nbsp;    â”‚ Audio Emb.  â”‚                         â”‚   (256)     â”‚
 
-# &nbsp;    │ 256-dim     │                         └──────┬──────┘
+# &nbsp;    â”‚ 256-dim     â”‚                         â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”˜
 
-# &nbsp;    └──────┬──────┘                                │
+# &nbsp;    â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”˜                                â”‚
 
-# &nbsp;           │                                 ┌─────────────┐
+# &nbsp;           â”‚                                 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-# &nbsp;           │                                 │ Text Emb.   │
+# &nbsp;           â”‚                                 â”‚ Text Emb.   â”‚
 
-# &nbsp;           │                                 │ 256-dim     │
+# &nbsp;           â”‚                                 â”‚ 256-dim     â”‚
 
-# &nbsp;           │                                 └──────┬──────┘
+# &nbsp;           â”‚                                 â””â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”˜
 
-# &nbsp;           │                                        │
+# &nbsp;           â”‚                                        â”‚
 
-# &nbsp;           └──────────────┬─────────────────────────┘
+# &nbsp;           â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-# &nbsp;                          │
+# &nbsp;                          â”‚
 
-# &nbsp;                ┌─────────────────────┐
+# &nbsp;                â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-# &nbsp;                │  Cross-Modal Fusion │
+# &nbsp;                â”‚  Cross-Modal Fusion â”‚
 
-# &nbsp;                │  Attention Layer    │
+# &nbsp;                â”‚  Attention Layer    â”‚
 
-# &nbsp;                └──────────┬──────────┘
+# &nbsp;                â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-# &nbsp;                           │
+# &nbsp;                           â”‚
 
-# &nbsp;                  ┌─────────────────┐
+# &nbsp;                  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-# &nbsp;                  │  Dense Layers   │
+# &nbsp;                  â”‚  Dense Layers   â”‚
 
-# &nbsp;                  │  + Dropout      │
+# &nbsp;                  â”‚  + Dropout      â”‚
 
-# &nbsp;                  └────────┬────────┘
+# &nbsp;                  â””â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-# &nbsp;                           │
+# &nbsp;                           â”‚
 
-# &nbsp;                ┌─────────────────────┐
+# &nbsp;                â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-# &nbsp;                │  Severity Classifier │
+# &nbsp;                â”‚  Severity Classifier â”‚
 
-# &nbsp;                │ Softmax Output       │
+# &nbsp;                â”‚ Softmax Output       â”‚
 
-# &nbsp;                └──────────┬───────────┘
+# &nbsp;                â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-# &nbsp;                           │
+# &nbsp;                           â”‚
 
-# &nbsp;       ┌────────────────────────────────────────┐
+# &nbsp;       â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-# &nbsp;       │  Low Severity | Medium | High Severity │
+# &nbsp;       â”‚  Low Severity | Medium | High Severity â”‚
 
-# &nbsp;       └────────────────────────────────────────┘
+# &nbsp;       â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
 # ```
 
@@ -229,15 +238,15 @@ pinned: false
 
 # \*\*Key components:\*\*
 
-# \- `AudioEncoder` — CNN layers + BiLSTM for temporal MFCC features
+# \- `AudioEncoder` â€” CNN layers + BiLSTM for temporal MFCC features
 
-# \- `TextEncoder` — DistilBERT pretrained transformer for crime text
+# \- `TextEncoder` â€” DistilBERT pretrained transformer for crime text
 
-# \- `MultimodalFusionModel` — Late fusion with projection heads
+# \- `MultimodalFusionModel` â€” Late fusion with projection heads
 
-# \- `SupervisedContrastiveLoss` — Improves class separation
+# \- `SupervisedContrastiveLoss` â€” Improves class separation
 
-# \- \*\*Conservative Fusion Rule\*\* — Any modality predicting High → final = High
+# \- \*\*Conservative Fusion Rule\*\* â€” Any modality predicting High â†’ final = High
 
 # 
 
@@ -245,7 +254,7 @@ pinned: false
 
 # 
 
-# \## 📊 Results
+# \## ðŸ“Š Results
 
 # 
 
@@ -277,7 +286,7 @@ pinned: false
 
 # ---
 
-# \## 📊 Model Performance
+# \## ðŸ“Š Model Performance
 
 # 
 
@@ -313,7 +322,7 @@ pinned: false
 
 # ---
 
-# \## 🔊 Audio Signal Visualisations
+# \## ðŸ”Š Audio Signal Visualisations
 
 # 
 
@@ -337,7 +346,7 @@ pinned: false
 
 # ---
 
-# \## 🗂️ Project Structure
+# \## ðŸ—‚ï¸ Project Structure
 
 # 
 
@@ -345,85 +354,85 @@ pinned: false
 
 # Intelligent-Crime-Detection-Multimodal/
 
-# │
+# â”‚
 
-# ├── app.py                  # Dash web dashboard (Render deployment)
+# â”œâ”€â”€ app.py                  # Dash web dashboard (Render deployment)
 
-# ├── render.yaml             # Render deployment config
+# â”œâ”€â”€ render.yaml             # Render deployment config
 
-# ├── requirements.txt        # Python dependencies
+# â”œâ”€â”€ requirements.txt        # Python dependencies
 
-# ├── .gitignore
+# â”œâ”€â”€ .gitignore
 
-# ├── LICENSE
+# â”œâ”€â”€ LICENSE
 
-# │
+# â”‚
 
-# ├── data/
+# â”œâ”€â”€ data/
 
-# │   ├── raw/
+# â”‚   â”œâ”€â”€ raw/
 
-# │   │   ├── audio/          # UrbanSound8K .wav files (fold1–fold10)
+# â”‚   â”‚   â”œâ”€â”€ audio/          # UrbanSound8K .wav files (fold1â€“fold10)
 
-# │   │   │   └── UrbanSound8K.csv
+# â”‚   â”‚   â”‚   â””â”€â”€ UrbanSound8K.csv
 
-# │   │   └── text/
+# â”‚   â”‚   â””â”€â”€ text/
 
-# │   │       └── Chicago\_PD\_IUCR.csv
+# â”‚   â”‚       â””â”€â”€ Chicago\_PD\_IUCR.csv
 
-# │   ├── mfcc\_data\_with\_labels\_severity.pt
+# â”‚   â”œâ”€â”€ mfcc\_data\_with\_labels\_severity.pt
 
-# │   └── text\_data.pt
+# â”‚   â””â”€â”€ text\_data.pt
 
-# │
+# â”‚
 
-# ├── models/
+# â”œâ”€â”€ models/
 
-# │   └── best\_model.pt       # Trained model weights (Git LFS)
+# â”‚   â””â”€â”€ best\_model.pt       # Trained model weights (Git LFS)
 
-# │
+# â”‚
 
-# ├── notebook/
+# â”œâ”€â”€ notebook/
 
-# │   └── Crime\_Detection.ipynb  # Full training \& evaluation notebook
+# â”‚   â””â”€â”€ Crime\_Detection.ipynb  # Full training \& evaluation notebook
 
-# │
+# â”‚
 
-# ├── images/
+# â”œâ”€â”€ images/
 
-# │   ├── training\_history.png
+# â”‚   â”œâ”€â”€ training\_history.png
 
-# │   ├── confusion\_matrix\_final\_method3.png
+# â”‚   â”œâ”€â”€ confusion\_matrix\_final\_method3.png
 
-# │   ├── roc\_curves.png
+# â”‚   â”œâ”€â”€ roc\_curves.png
 
-# │   ├── ablation\_results.png
+# â”‚   â”œâ”€â”€ ablation\_results.png
 
-# │   ├── real\_monitoring\_dashboard.png
+# â”‚   â”œâ”€â”€ real\_monitoring\_dashboard.png
 
-# │   └── explanation\_dashboards/
+# â”‚   â””â”€â”€ explanation\_dashboards/
 
-# │
+# â”‚
 
-# ├── src/
+# â”œâ”€â”€ src/
 
-# │   ├── models.py           # AudioEncoder, TextEncoder, FusionModel
+# â”‚   â”œâ”€â”€ models.py           # AudioEncoder, TextEncoder, FusionModel
 
-# │   ├── audio\_encoder.py
+# â”‚   â”œâ”€â”€ audio\_encoder.py
 
-# │   └── utils/
+# â”‚   â””â”€â”€ utils/
 
-# │       ├── metrics.py
+# â”‚       â”œâ”€â”€ metrics.py
 
-# │       └── visualization.py
+# â”‚       â””â”€â”€ visualization.py
 
-# │
+# â”‚
 
-# └── tests/
+# â””â”€â”€ tests/
 
-# &nbsp;   ├── test\_models.py
+# &nbsp;   â”œâ”€â”€ test\_models.py
 
-# &nbsp;   └── test\_data\_processing.py
+# &nbsp;   â””â”€â”€ test\_data\_processing.py
 
 # ```
 
@@ -433,7 +442,7 @@ pinned: false
 
 # 
 
-# \## 📦 Datasets
+# \## ðŸ“¦ Datasets
 
 # 
 
@@ -455,11 +464,11 @@ pinned: false
 
 # |-------|--------------|-----------------|
 
-# | 🟢 Low (0) | children\_playing, street\_music, air\_conditioner | OTHER OFFENSE, PUBLIC INDECENCY |
+# | ðŸŸ¢ Low (0) | children\_playing, street\_music, air\_conditioner | OTHER OFFENSE, PUBLIC INDECENCY |
 
-# | 🟡 Medium (1) | car\_horn, dog\_bark, jackhammer | THEFT, CRIMINAL DAMAGE, NARCOTICS |
+# | ðŸŸ¡ Medium (1) | car\_horn, dog\_bark, jackhammer | THEFT, CRIMINAL DAMAGE, NARCOTICS |
 
-# | 🔴 High (2) | gun\_shot, siren, drilling, engine\_idling | HOMICIDE, ROBBERY, ASSAULT, WEAPONS |
+# | ðŸ”´ High (2) | gun\_shot, siren, drilling, engine\_idling | HOMICIDE, ROBBERY, ASSAULT, WEAPONS |
 
 # 
 
@@ -467,7 +476,7 @@ pinned: false
 
 # 
 
-# \## ⚙️ Installation
+# \## âš™ï¸ Installation
 
 # 
 
@@ -487,7 +496,7 @@ pinned: false
 
 # 
 
-# \## 🏃 Run Locally
+# \## ðŸƒ Run Locally
 
 # 
 
@@ -505,7 +514,7 @@ pinned: false
 
 # 
 
-# \## 🏋️ Training
+# \## ðŸ‹ï¸ Training
 
 # 
 
@@ -513,17 +522,17 @@ pinned: false
 
 # 1\. Path setup \& data loading
 
-# 2\. EDA — text and audio exploration
+# 2\. EDA â€” text and audio exploration
 
-# 3\. MFCC preprocessing → saves `mfcc\_data\_with\_labels\_severity.pt`
+# 3\. MFCC preprocessing â†’ saves `mfcc\_data\_with\_labels\_severity.pt`
 
-# 4\. Text tokenization → saves `text\_data.pt`
+# 4\. Text tokenization â†’ saves `text\_data.pt`
 
 # 5\. Model definition (AudioEncoder, TextEncoder, FusionModel)
 
 # 6\. Training with cosine annealing + contrastive loss
 
-# 7\. Evaluation — confusion matrix, ROC curves, F2 score
+# 7\. Evaluation â€” confusion matrix, ROC curves, F2 score
 
 # 8\. Ablation study
 
@@ -535,29 +544,29 @@ pinned: false
 
 # 
 
-# \## 📈 Dashboard Features
+# \## ðŸ“ˆ Dashboard Features
 
 # 
 
-# \- 📍 \*\*Geographic Map\*\* — Incident predictions visualized on a simulated city map (Visakhapatnam) for demonstration purposes
+# \- ðŸ“ \*\*Geographic Map\*\* â€” Incident predictions visualized on a simulated city map (Visakhapatnam) for demonstration purposes
 
-# \- 📊 \*\*Severity Distribution\*\* — Real-time bar chart of Low/Medium/High
+# \- ðŸ“Š \*\*Severity Distribution\*\* â€” Real-time bar chart of Low/Medium/High
 
-# \- 🚨 \*\*High Severity Alerts\*\* — Prioritized list with recommended actions
+# \- ðŸš¨ \*\*High Severity Alerts\*\* â€” Prioritized list with recommended actions
 
-# \- 📋 \*\*Incidents Table\*\* — Full log with severity badges and details modal
+# \- ðŸ“‹ \*\*Incidents Table\*\* â€” Full log with severity badges and details modal
 
-# \- 🔍 \*\*Incident Modal\*\* — Confidence score, precautionary measures, mini map
+# \- ðŸ” \*\*Incident Modal\*\* â€” Confidence score, precautionary measures, mini map
 
-# \- 🎚️ \*\*Confidence Threshold Slider\*\* — Filter incidents by minimum confidence level
+# \- ðŸŽšï¸ \*\*Confidence Threshold Slider\*\* â€” Filter incidents by minimum confidence level
 
-# \- 📈 \*\*Time-Series Chart\*\* — Severity trends visualized over time
+# \- ðŸ“ˆ \*\*Time-Series Chart\*\* â€” Severity trends visualized over time
 
 # 
 
 # ---
 
-# \## 📸 Dashboard Preview
+# \## ðŸ“¸ Dashboard Preview
 
 # 
 
@@ -573,7 +582,7 @@ pinned: false
 
 # 
 
-# \## 🚀 Deployment
+# \## ðŸš€ Deployment
 
 # 
 
@@ -603,7 +612,7 @@ pinned: false
 
 # 
 
-# \## 🛠️ Tech Stack
+# \## ðŸ› ï¸ Tech Stack
 
 # 
 
@@ -629,7 +638,7 @@ pinned: false
 
 # 
 
-# \## 🔬 Research Contributions
+# \## ðŸ”¬ Research Contributions
 
 # 
 
@@ -641,13 +650,13 @@ pinned: false
 
 # 
 
-# • Fusion of \*\*acoustic event detection\*\* and \*\*crime narrative text\*\*  
+# â€¢ Fusion of \*\*acoustic event detection\*\* and \*\*crime narrative text\*\*  
 
-# • Use of \*\*DistilBERT + CNN-BiLSTM hybrid architecture\*\*  
+# â€¢ Use of \*\*DistilBERT + CNN-BiLSTM hybrid architecture\*\*  
 
-# • A \*\*conservative fusion strategy\*\* prioritizing high-risk predictions  
+# â€¢ A \*\*conservative fusion strategy\*\* prioritizing high-risk predictions  
 
-# • Real-time monitoring through an interactive \*\*Dash dashboard\*\*
+# â€¢ Real-time monitoring through an interactive \*\*Dash dashboard\*\*
 
 # 
 
@@ -657,29 +666,17 @@ pinned: false
 
 # ---
 
-# \## 🔮 Future Work
+# \## ðŸ”® Future Work
 
 # 
 
-# • Incorporate datasets where \*\*audio and text originate from the same incident\*\* (e.g., police bodycam footage with transcripts) to improve multimodal learning quality.
+# â€¢ Incorporate datasets where \*\*audio and text originate from the same incident\*\* (e.g., police bodycam footage with transcripts) to improve multimodal learning quality.
 
-# • Add \*\*attention visualization\*\* to highlight which words or audio frequencies most influenced the model’s prediction.
+# â€¢ Add \*\*attention visualization\*\* to highlight which words or audio frequencies most influenced the modelâ€™s prediction.
 
-# • Extend the system with \*\*video-based crime detection using CCTV footage\*\* as a third modality.
+# â€¢ Extend the system with \*\*video-based crime detection using CCTV footage\*\* as a third modality.
 
-# • Deploy \*\*real-time streaming inputs\*\* (audio or sensor feeds) for continuous incident monitoring.
-
-# 
-
-# ---
-
-# 
-
-# \## 📜 License
-
-# 
-
-# MIT License — see \[LICENSE](LICENSE) for details.
+# â€¢ Deploy \*\*real-time streaming inputs\*\* (audio or sensor feeds) for continuous incident monitoring.
 
 # 
 
@@ -687,7 +684,19 @@ pinned: false
 
 # 
 
-# \## 👩‍💻 Author
+# \## ðŸ“œ License
+
+# 
+
+# MIT License â€” see \[LICENSE](LICENSE) for details.
+
+# 
+
+# ---
+
+# 
+
+# \## ðŸ‘©â€ðŸ’» Author
 
 # 
 
@@ -697,7 +706,8 @@ pinned: false
 
 # 
 
-# \[GitHub](https://github.com/priyapalivela) · \[LinkedIn](https://www.linkedin.com/in/bhanu-priya-palivela-2045s/)
+# \[GitHub](https://github.com/priyapalivela) Â· \[LinkedIn](https://www.linkedin.com/in/bhanu-priya-palivela-2045s/)
+
 
 
 
