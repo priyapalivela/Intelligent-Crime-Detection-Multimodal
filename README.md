@@ -348,8 +348,11 @@ The system demonstrates how multimodal learning can support **early warning and 
 ## 🔮 Future Work
 
 • Incorporate datasets where **audio and text originate from the same incident** (e.g., police bodycam footage with transcripts) to improve multimodal learning quality.
+
 • Add **attention visualization** to highlight which words or audio frequencies most influenced the model's prediction.
+
 • Extend the system with **video-based crime detection using CCTV footage** as a third modality.
+
 • Deploy **real-time streaming inputs** (audio or sensor feeds) for continuous incident monitoring.
 
 ---
