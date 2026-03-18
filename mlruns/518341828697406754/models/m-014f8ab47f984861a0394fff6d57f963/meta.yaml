@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/TRN Srinivas/Desktop/Intelligent-Crime-Detection-Multimodal/mlruns/518341828697406754/models/m-014f8ab47f984861a0394fff6d57f963/artifacts
+creation_timestamp: 1773810883397
+experiment_id: '518341828697406754'
+last_updated_timestamp: 1773810889464
+model_id: m-014f8ab47f984861a0394fff6d57f963
+model_type: null
+name: model
+source_run_id: 4cdb5f3efb364c3581b6c4dd3e58d512
+status: 2
+status_message: null

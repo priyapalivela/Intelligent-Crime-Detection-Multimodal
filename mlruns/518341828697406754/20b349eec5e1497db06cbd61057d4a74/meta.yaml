@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/TRN Srinivas/Desktop/Intelligent-Crime-Detection-Multimodal/mlruns/518341828697406754/20b349eec5e1497db06cbd61057d4a74/artifacts
+end_time: 1773811889273
+entry_point_name: ''
+experiment_id: '518341828697406754'
+lifecycle_stage: active
+run_id: 20b349eec5e1497db06cbd61057d4a74
+run_name: CNN_BiLSTM_DistilBERT_Fusion
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773811889137
+status: 3
+tags: []
+user_id: TRN Srinivas

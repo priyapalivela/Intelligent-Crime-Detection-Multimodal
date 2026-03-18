@@ -1,0 +1,23 @@
+artifact_path: file:///C:/Users/TRN Srinivas/Desktop/Intelligent-Crime-Detection-Multimodal/mlruns/518341828697406754/models/m-014f8ab47f984861a0394fff6d57f963/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.9
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.10.1
+model_id: m-014f8ab47f984861a0394fff6d57f963
+model_size_bytes: 784
+model_uuid: m-014f8ab47f984861a0394fff6d57f963
+prompts: null
+run_id: 4cdb5f3efb364c3581b6c4dd3e58d512
+utc_time_created: '2026-03-18 05:14:43.449356'
