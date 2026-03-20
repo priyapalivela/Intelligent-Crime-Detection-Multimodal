@@ -15,6 +15,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Recommended actions panel in inference result
 - Color-coded result card (Red/Orange/Green by severity)
 - Clear button to reset inference panel
+- ⚡ FastAPI REST API — /predict, /health, /audio-classes, /text-categories, /predict/batch endpoints
+- MLflow experiment tracking — parameters, metrics and ablation study logged
 
 ### Fixed
 - Audio Class Distribution chart now uses discrete severity colors (Red/Orange/Green) instead of continuous color scale
