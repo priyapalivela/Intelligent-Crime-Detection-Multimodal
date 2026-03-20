@@ -35,6 +35,9 @@ pinned: false
 - 🤖 **Live Inference Panel** — select audio class + type crime description → instant severity prediction
 - 🔍 **Modality breakdown** — see audio vs text predictions separately with confidence scores
 - 🏷️ **Keyword matching** — highlights which words triggered the text severity prediction
+- 📊 **MLflow tracking** — experiment parameters, metrics and ablation study logged
+- ⚡ **FastAPI REST API** — /predict endpoint wrapping the trained model
+
  
 ---
 
@@ -210,7 +213,9 @@ The system shows:
 ```
 Intelligent-Crime-Detection-Multimodal/
 │
-├── app.py                  # Dash web dashboard
+├── app.py                  # Dash web dashboard + live inference panel
+├── main.py                 # FastAPI REST API wrapper
+├── mlflow_test.py          # MLflow experiment tracking
 ├── Dockerfile              # Docker deployment config
 ├── requirements.txt        # Python dependencies
 ├── .gitignore
@@ -237,7 +242,10 @@ Intelligent-Crime-Detection-Multimodal/
 │   ├── roc_curves.png
 │   ├── ablation_results.png
 │   ├── real_monitoring_dashboard.png
+│   ├── MLflow/             # MLflow experiment tracking screenshots
 │   └── explanation_dashboards/
+│
+├── mlruns/                 # MLflow local tracking data
 │
 ├── src/
 │   ├── models.py           # AudioEncoder, TextEncoder, FusionModel
@@ -357,6 +365,8 @@ CMD ["gunicorn", "app:server", "--workers", "1", "--threads", "2", "--timeout", 
 | Containerization | Docker (python:3.11-slim) |
 | Deployment | HuggingFace Spaces, Gunicorn |
 | Testing | pytest — 10/10 passing |
+| Experiment Tracking | MLflow — parameters, metrics, ablation logged |
+| REST API | FastAPI + Uvicorn — /predict endpoint |
  
 ---
  
