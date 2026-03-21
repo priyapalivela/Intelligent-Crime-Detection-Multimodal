@@ -53,6 +53,7 @@ pinned: false
 - [Training](#-training)
 - [Dashboard Features](#-dashboard-features)
 - [Deployment](#-deployment)
+- [REST API](#-rest-api)
 - [Tech Stack](#-tech-stack)
 - [Research Contributions](#-research-contributions)
 - [Future Work](#-future-work)
@@ -290,10 +291,17 @@ pip install -r requirements.txt
 
 ## 🏃 Run Locally
 
+**Dashboard:**
 ```bash
 python app.py
 ```
-Then open [http://localhost:8050](http://localhost:8050) in your browser.
+Then open [http://localhost:8050](http://localhost:8050)
+
+**REST API:**
+```bash
+python main.py
+```
+Then open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ---
 
@@ -351,6 +359,43 @@ CMD ["gunicorn", "app:server", "--workers", "1", "--threads", "2", "--timeout", 
 
 🔗 Live at: [priyapalivela-crime-detection-dashboard.hf.space](https://priyapalivela-crime-detection-dashboard.hf.space)
 
+---
+
+## ⚡ REST API
+
+The model is also wrapped in a **FastAPI REST API** for programmatic access.
+```bash
+python main.py
+```
+
+### Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/` | Model info and version |
+| GET | `/health` | Model loaded status |
+| GET | `/audio-classes` | All 10 audio classes with severity mapping |
+| GET | `/text-categories` | All 29 IUCR crime categories |
+| POST | `/predict` | Real multimodal inference |
+| POST | `/predict/batch` | Batch predictions (max 10) |
+
+### Example Request
+```bash
+curl -X POST "http://127.0.0.1:8000/predict" \
+  -H "Content-Type: application/json" \
+  -d '{"audio_class": "gun_shot", "description": "ROBBERY"}'
+```
+
+### Example Response
+```json
+{
+  "audio_modality": {"severity_label": "Medium", "confidence": 0.8675},
+  "text_modality": {"severity_label": "High", "confidence": 1.0},
+  "final_severity": "High",
+  "fusion_rule": "conservative_max — max(audio_pred, text_pred)",
+  "recommended_actions": ["Immediate response required", "Alert police/emergency services"]
+}
+```
 ---
 
 ## 🛠️ Tech Stack
