@@ -2,6 +2,26 @@
 All notable changes to this project will be documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.0] - 2026-03-21
+### Added
+- **Attention-based explainability** — word importance visualization in live inference panel
+- Words colored by text severity prediction (red=High, orange=Medium, green=Low, grey=not a crime word)
+- Non-crime filler words now shown as plain grey — no misleading highlights
+- FastAPI `/explain` endpoint — returns word attention scores from 6 DistilBERT layers × 12 heads
+- FastAPI `/predict/audio` endpoint — accepts real WAV files, extracts MFCC via librosa (Gap 2 closed)
+- `python-multipart` dependency for WAV file upload support
+- Baseline comparison table — CNN-BiLSTM + DistilBERT outperforms all single-modality baselines by 9%+
+
+### Fixed
+- Word attention section hidden when text has no crime keywords (e.g. "kite fly games")
+- High Severity Alerts panel redesigned — red ID badge, gradient card, confidence display
+- Location map in modal now has dark background matching dashboard theme
+- Audio chart legend removed (showlegend=False) for cleaner appearance
+
+### Changed
+- Version bumped to v1.4.0
+- README updated with /explain and /predict/audio endpoints
+- FastAPI version string updated to 1.4.0
 ---
 
 ## [1.3.0] - 2026-03-15
