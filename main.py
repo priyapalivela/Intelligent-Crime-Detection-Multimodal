@@ -6,12 +6,13 @@ Run:  python main.py
 Open: http://127.0.0.1:8000/docs
 """
 
-import os, sys, torch, torch.nn as nn, torch.nn.functional as F, numpy as np
+import os, sys, torch, torch.nn as nn, torch.nn.functional as F, numpy as np, io
 from pathlib import Path
 from typing import List, Dict, Any
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from pydantic import BaseModel
 from transformers import DistilBertModel, DistilBertTokenizer
+import librosa
 
 try:    PROJECT_ROOT = Path(__file__).resolve().parent
 except: PROJECT_ROOT = Path.cwd()
@@ -289,6 +290,121 @@ def predict_batch(requests:List[PredictionRequest]):
         except Exception as e:
             results.append({"error":str(e),"audio_class":req.audio_class})
     return {"total":len(results),"predictions":results}
+
+
+@app.post("/predict/audio")
+@torch.no_grad()
+async def predict_from_audio(
+    file: UploadFile = File(..., description="Upload a WAV audio file"),
+    description: str = Form(default="", description="Optional crime description text")
+):
+    """
+    Gap 2 — Real WAV file inference.
+    
+    Upload an actual WAV file → librosa extracts REAL MFCCs → model inference.
+    This is production-ready audio processing — not synthetic patterns.
+    
+    Accepted formats: WAV, MP3, FLAC (any format librosa supports)
+    """
+    # ── Validate file type ─────────────────────────────────────────────────
+    if not file.filename:
+        raise HTTPException(400, "No file provided")
+    
+    allowed = {".wav", ".mp3", ".flac", ".ogg", ".m4a"}
+    ext = "." + file.filename.split(".")[-1].lower()
+    if ext not in allowed:
+        raise HTTPException(400, f"File type {ext} not supported. Use: {allowed}")
+
+    # ── Read and process audio ─────────────────────────────────────────────
+    try:
+        audio_bytes = await file.read()
+        audio_buffer = io.BytesIO(audio_bytes)
+        
+        # Real MFCC extraction using librosa — same as training pipeline
+        y, sr = librosa.load(audio_buffer, sr=22050, duration=4.0)
+        
+        # Extract 40 MFCC features — exact same parameters as training
+        mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=40, hop_length=512)
+        
+        # Pad or truncate to 100 frames — same as training
+        if mfcc.shape[1] < 100:
+            mfcc = np.pad(mfcc, ((0,0),(0,100-mfcc.shape[1])), mode="constant")
+        else:
+            mfcc = mfcc[:, :100]
+        
+        audio_tensor = torch.tensor(mfcc.astype(np.float32)).unsqueeze(0)  # [1, 40, 100]
+        
+    except Exception as e:
+        raise HTTPException(422, f"Audio processing failed: {str(e)}")
+
+    # ── Text processing ────────────────────────────────────────────────────
+    text_desc = description.strip() if description else ""
+    if not text_desc:
+        text_desc = "UNKNOWN"  # fallback if no text provided
+
+    tokenized = tokenizer(
+        text_desc.upper(),
+        padding="max_length", truncation=True,
+        max_length=64, return_tensors="pt"
+    )
+    text_tensor = tokenized["input_ids"].long()
+
+    # ── Real model inference ───────────────────────────────────────────────
+    logits, audio_emb, text_emb = model(audio_tensor, text_tensor)
+    probs = F.softmax(logits, dim=1)[0]
+    pred  = probs.argmax().item()
+    probs_dict = {"Low":round(probs[0].item(),4),"Medium":round(probs[1].item(),4),"High":round(probs[2].item(),4)}
+
+    # Unimodal predictions
+    af=model.audio_encoder(audio_tensor); ae=F.relu(model.audio_proj(af))
+    al=model.classifier(torch.cat([ae,torch.zeros_like(ae)],dim=1))
+    apr=F.softmax(al,dim=1)[0]; apred=al.argmax(dim=1).item()
+
+    tf=model.text_encoder(text_tensor); te=F.relu(model.text_proj(tf))
+    tl=model.classifier(torch.cat([torch.zeros_like(te),te],dim=1))
+    tpr=F.softmax(tl,dim=1)[0]; tpred=tl.argmax(dim=1).item()
+
+    final = MultimodalFusionModel.final_severity(apred, tpred)
+
+    # Audio features info
+    audio_duration = len(y) / sr
+    audio_rms = float(np.sqrt(np.mean(y**2)))
+
+    return {
+        "filename":       file.filename,
+        "audio_info": {
+            "duration_seconds": round(audio_duration, 2),
+            "sample_rate":      sr,
+            "rms_energy":       round(audio_rms, 4),
+            "mfcc_shape":       f"[40, 100]",
+            "processing":       "Real librosa MFCC extraction — not synthetic"
+        },
+        "audio_modality": {
+            "severity_label": SEVERITY_LABELS[apred],
+            "severity_code":  apred,
+            "confidence":     round(apr[apred].item(), 4),
+            "probabilities":  {"Low":round(apr[0].item(),4),"Medium":round(apr[1].item(),4),"High":round(apr[2].item(),4)}
+        },
+        "text_modality": {
+            "description":    text_desc,
+            "severity_label": SEVERITY_LABELS[tpred],
+            "severity_code":  tpred,
+            "confidence":     round(tpr[tpred].item(), 4),
+        },
+        "final_severity":      SEVERITY_LABELS[final],
+        "final_severity_code": final,
+        "fusion_rule":         "conservative_max — max(audio_pred, text_pred)",
+        "probabilities":       probs_dict,
+        "recommended_actions": MEASURES[final],
+        "color":               SEVERITY_COLORS[final],
+        "model_info": {
+            "audio_features": "Real MFCC via librosa.feature.mfcc(n_mfcc=40, hop_length=512)",
+            "text_features":  "DistilBertTokenizer max_length=64",
+            "architecture":   "CNN-BiLSTM + DistilBERT conservative late fusion",
+            "accuracy":       "88.29%"
+        }
+    }
+
 
 if __name__=="__main__":
     import uvicorn

@@ -15,8 +15,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Recommended actions panel in inference result
 - Color-coded result card (Red/Orange/Green by severity)
 - Clear button to reset inference panel
+<<<<<<< HEAD
 - ⚡ FastAPI REST API — /predict, /health, /audio-classes, /text-categories, /predict/batch endpoints
 - MLflow experiment tracking — parameters, metrics and ablation study logged
+=======
+>>>>>>> 8427c03342d9be33be6a48341be704d310250e1d
 
 ### Fixed
 - Audio Class Distribution chart now uses discrete severity colors (Red/Orange/Green) instead of continuous color scale
@@ -71,4 +74,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Per-sample explainability dashboards
 - Interactive Dash web dashboard (dark theme, Plotly maps, modal incident details)
 - Modular src/ package: models/, data/, utils/
+<<<<<<< HEAD
 - Unit tests for model forward passes and data processing utilities
+=======
+- Unit tests for model forward passes and data processing utilities
+>>>>>>> 8427c03342d9be33be6a48341be704d310250e1d
