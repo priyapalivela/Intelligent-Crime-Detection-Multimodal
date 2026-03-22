@@ -479,7 +479,10 @@ def run_inference(n_clicks, audio_class, text_description):
                 else:
                     bg = "transparent"; col = "#606080"; bold = False
 
-            word_spans.append(html.Span(ws["word"]+" ",
+            # Show word + percentage only for crime keywords (score > 0)
+            display_text = f"{ws['word']} {round(score*100)}%" if score > 0 else ws['word']
+
+            word_spans.append(html.Span(display_text+" ",
                 style={"background":bg,"color":col,"padding":"2px 7px",
                        "borderRadius":"4px","margin":"2px","display":"inline-block",
                        "fontSize":"0.88em","fontWeight":"600" if bold else "normal"}))
