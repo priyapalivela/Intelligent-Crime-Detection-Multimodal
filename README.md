@@ -19,6 +19,7 @@ pinned: false
 ![Dash](https://img.shields.io/badge/Dash-2.17.0-blue)
 ![Docker](https://img.shields.io/badge/Deploy-Docker-blue)
 ![HuggingFace](https://img.shields.io/badge/Deploy-HuggingFace_Spaces-yellow)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF)
 ![Tests](https://img.shields.io/badge/Tests-10%2F10_passing-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-green)
  
@@ -37,6 +38,8 @@ pinned: false
 - 🏷️ **Keyword matching** — highlights which words triggered the text severity prediction
 - 📊 **MLflow tracking** — experiment parameters, metrics and ablation study logged
 - ⚡ **FastAPI REST API** — /predict endpoint wrapping the trained model
+- 🔄 **CI/CD Pipeline** — automated testing and deployment with GitHub Actions
+- 🧪 **Automated Testing** — pytest runs on every commit with code quality checks
 
  
 ---
@@ -54,6 +57,7 @@ pinned: false
 - [Dashboard Features](#-dashboard-features)
 - [Deployment](#-deployment)
 - [REST API](#-rest-api)
+- [CI/CD Pipeline](#-cicd-pipeline)
 - [Tech Stack](#-tech-stack)
 - [Research Contributions](#-research-contributions)
 - [Future Work](#-future-work)
@@ -214,13 +218,19 @@ The system shows:
 ```
 Intelligent-Crime-Detection-Multimodal/
 │
+├── .github/                # GitHub workflows
+│   └── workflows/
+│       └── ci-cd.yml       # CI/CD pipeline configuration
+│
 ├── app.py                  # Dash web dashboard + live inference panel
 ├── main.py                 # FastAPI REST API wrapper
 ├── mlflow_test.py          # MLflow experiment tracking
 ├── Dockerfile              # Docker deployment config
 ├── requirements.txt        # Python dependencies
 ├── .gitignore
+├── .gitattributes          # Git LFS configuration
 ├── LICENSE
+├── CHANGELOG.md            # Version history
 │
 ├── data/
 │   ├── raw/
@@ -243,6 +253,9 @@ Intelligent-Crime-Detection-Multimodal/
 │   ├── roc_curves.png
 │   ├── ablation_results.png
 │   ├── real_monitoring_dashboard.png
+│   ├── Audio_Signal Picture.png
+│   ├── MEL Frequency Cepstral Coefficients of Audio.png
+│   ├── Spectrogram of Crime Sound.png
 │   ├── MLflow/             # MLflow experiment tracking screenshots
 │   └── explanation_dashboards/
 │
@@ -256,8 +269,8 @@ Intelligent-Crime-Detection-Multimodal/
 │       └── visualization.py
 │
 └── tests/
-    ├── test_models.py           # 4 tests — all passing
-    └── test_data_processing.py  # 6 tests — all passing
+    ├── test_models.py           # 4 tests — all passing ✅
+    └── test_data_processing.py  # 6 tests — all passing ✅
 ```
 
 ---
@@ -396,6 +409,53 @@ curl -X POST "http://127.0.0.1:8000/predict" \
   "recommended_actions": ["Immediate response required", "Alert police/emergency services"]
 }
 ```
+
+---
+
+## 🔄 CI/CD Pipeline
+
+This project uses **GitHub Actions** for continuous integration and deployment.
+
+### Pipeline Features
+
+- ✅ **Automated Testing** — Runs pytest on every push and pull request
+- 🔍 **Code Quality Checks** — Linting with flake8 for syntax errors
+- 📊 **Test Coverage** — Generates coverage reports with pytest-cov
+- 🐳 **Docker Validation** — Ensures Docker image builds successfully
+- 🚀 **Continuous Deployment** — Auto-deploys to Hugging Face Spaces on main branch
+
+### Workflow Triggers
+
+The CI/CD pipeline runs on:
+- **Push** to `main` or `develop` branches
+- **Pull requests** targeting `main` branch
+- **Manual** workflow dispatch from Actions tab
+
+### Pipeline Status
+
+View real-time pipeline status and logs:
+1. Go to the [Actions tab](https://github.com/priyapalivela/Intelligent-Crime-Detection-Multimodal/actions)
+2. Click on any workflow run to see detailed logs
+3. Green ✅ = All tests passed | Red ❌ = Failed tests
+
+### Local Testing
+
+Test the pipeline components locally before pushing:
+
+```bash
+# Run tests
+pytest tests/ -v --cov=src
+
+# Check code quality
+flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+# Build Docker image
+docker build -t crime-detection .
+
+# Run Docker container
+docker run -p 7860:7860 crime-detection
+```
+
 ---
 
 ## 🛠️ Tech Stack
@@ -410,6 +470,7 @@ curl -X POST "http://127.0.0.1:8000/predict" \
 | Containerization | Docker (python:3.11-slim) |
 | Deployment | HuggingFace Spaces, Gunicorn |
 | Testing | pytest — 10/10 passing |
+| CI/CD | GitHub Actions — automated pipeline |
 | Experiment Tracking | MLflow — parameters, metrics, ablation logged |
 | REST API | FastAPI + Uvicorn — /predict endpoint |
  
@@ -422,6 +483,7 @@ curl -X POST "http://127.0.0.1:8000/predict" \
 - **Conservative fusion strategy** prioritizing high-risk predictions
 - **Live inference panel** demonstrating real multimodal classification
 - Real-time monitoring through interactive **Dash dashboard**
+- **Production-ready deployment** with automated CI/CD pipeline
  
 ---
  
@@ -432,7 +494,24 @@ curl -X POST "http://127.0.0.1:8000/predict" \
 - Extend with video-based crime detection as a third modality
 - Deploy real-time audio streaming for continuous monitoring
 - Fine-tune on India-specific crime datasets (IPC codes)
+- Enhance CI/CD with automated model retraining and A/B testing
  
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Run tests locally (`pytest tests/ -v`)
+5. Commit your changes (`git commit -m 'Add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
+
+The CI/CD pipeline will automatically run tests on your PR!
+
 ---
 
 ## 📜 License
@@ -443,7 +522,17 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## 👩‍💻 Author
 
-**Bhanu Priya Palivela**
+**Bhanu Priya Palivela**  
 Data Science Graduate | AI & Multimodal Learning Enthusiast  
 
 [GitHub](https://github.com/priyapalivela) · [LinkedIn](https://www.linkedin.com/in/bhanu-priya-palivela-2045s/)
+
+---
+
+<div align="center">
+
+**⭐ If you find this project helpful, please consider starring the repository!**
+
+Made with ❤️ for safer communities through AI
+
+</div>
