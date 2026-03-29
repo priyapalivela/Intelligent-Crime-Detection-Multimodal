@@ -16,14 +16,11 @@ pinned: false
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.2.0-red)
 ![Transformers](https://img.shields.io/badge/HuggingFace-Transformers-yellow)
-![Dash](https://img.shields.io/badge/Dash-2.17.0-blue)
-![Docker](https://img.shields.io/badge/Deploy-Docker-blue)
-![HuggingFace](https://img.shields.io/badge/Deploy-HuggingFace_Spaces-yellow)
-![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF)
+![Docker](https://img.shields.io/badge/Docker-Deployment-blue)
+[![CI/CD](https://github.com/priyapalivela/Intelligent-Crime-Detection-Multimodal/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/priyapalivela/Intelligent-Crime-Detection-Multimodal/actions)
 ![Tests](https://img.shields.io/badge/Tests-10%2F10_passing-brightgreen)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://priyapalivela-crime-detection-dashboard.hf.space)
 ![License](https://img.shields.io/badge/License-MIT-green)
- 
-> A real-time crime severity detection system that fuses **audio signals** and **text descriptions** using deep learning to classify incidents as Low, Medium, or High severity — with a live interactive Dash dashboard and **real-time multimodal inference**.
  
 ---
  
@@ -31,6 +28,10 @@ pinned: false
 🔗 **[priyapalivela-crime-detection-dashboard.hf.space](https://priyapalivela-crime-detection-dashboard.hf.space)**
  
 ---
+
+> 🚨 Multimodal AI system that detects crime severity using audio + text  
+> ⚡ Achieves **88.29% accuracy** with real-time inference dashboard  
+> 🧠 Built with PyTorch, FastAPI, Docker & CI/CD — production-ready
  
 ## ✨ What's New in v1.3.0
 - 🤖 **Live Inference Panel** — select audio class + type crime description → instant severity prediction
