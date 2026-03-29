@@ -29,9 +29,7 @@ pinned: false
  
 ---
 
-> 🚨 Multimodal AI system that detects crime severity using audio + text  
-> ⚡ Achieves **88.29% accuracy** with real-time inference dashboard  
-> 🧠 Built with PyTorch, FastAPI, Docker & CI/CD — production-ready
+🚨 This project presents a multimodal AI system for crime severity detection, combining audio signals and textual descriptions to deliver accurate predictions. Achieving 88.29% accuracy, it includes a real-time inference dashboard for interactive monitoring and analysis. Built using PyTorch, FastAPI, Docker, and CI/CD pipelines, the system is designed for production readiness and scalability.
  
 ## ✨ What's New in v1.3.0
 - 🤖 **Live Inference Panel** — select audio class + type crime description → instant severity prediction
